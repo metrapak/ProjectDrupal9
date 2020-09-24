@@ -1,0 +1,13 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+  function a_p_task92_theme($existing, $type, $theme, $path )
+  {
+      return [
+          'task92_plugin1' => [
+          'variables' => ['message' => NULL],
+          'path' => drupal_get_path('module', 'a_p_task92') . '/templates',
+           ],
+      ];
+  }
