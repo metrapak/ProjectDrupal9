@@ -1,4 +1,5 @@
 <?php
+
 namespace Drupal\test_block\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
