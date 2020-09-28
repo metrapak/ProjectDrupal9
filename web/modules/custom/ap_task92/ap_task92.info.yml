@@ -1,6 +1,6 @@
-name: 'a_p_task92'
+name: 'ap_task92'
 type: module
-description: 'Module with  two plugins'
+description: 'Module with two Plugins'
 core: 8.x
 core_version_requirement: ^8 || ^9
 package: 'Custom'
