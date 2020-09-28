@@ -24,7 +24,8 @@ class NodesTable extends BlockBase {
    */
   public function build() {
     $header = ['id', 'title', 'created'];
-    $nids = Drupal::entityQuery('node')->execute();
+    $nids = Drupal::entityQuery('node')->range(0,100)
+      ->execute();
     $nodes = Node::loadMultiple($nids);
     $rows = [];
     foreach ($nodes as $node) {
