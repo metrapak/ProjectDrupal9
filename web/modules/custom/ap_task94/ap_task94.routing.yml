@@ -1,0 +1,8 @@
+
+ap_task94.attribute_value_controller_outputValue:
+  path: '/outputValue'
+  defaults:
+    _controller: '\Drupal\ap_task94\Controller\AttributeValueController::outputValue'
+    _title: 'outputValue'
+  requirements:
+    _permission: 'access content'

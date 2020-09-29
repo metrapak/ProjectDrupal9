@@ -1,0 +1,8 @@
+name: 'ap_task94'
+type: module
+description: 'Module to page and block with js'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Custom'
+regions:
+  content: 'Content'
