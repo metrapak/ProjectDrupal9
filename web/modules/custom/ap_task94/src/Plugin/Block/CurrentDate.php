@@ -22,7 +22,7 @@ class CurrentDate extends BlockBase {
       '#theme' => 'current_date',
       '#attached' => [
         'library' => [
-          'ap_task94/my_library',
+          'ap_task94/date_library',
         ],
       ],
     ];

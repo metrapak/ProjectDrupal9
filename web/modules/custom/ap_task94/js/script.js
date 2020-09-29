@@ -1,18 +1,18 @@
 
 /**
  * @file
- * Simple JavaScript  file.
+ * Simple JavaScript hello world file.
  */
 
-(function ($, Drupal, settings) {
+ (function ($, Drupal, settings) {
 
-  "use strict";
+   "use strict";
 
-  Drupal.behaviors.valueClassAttribute = {
-    attach: function (context) {
-      let className = document.body.className;
-      alert(className);
-    }
-  }
+   Drupal.behaviors.valueClassAttribute = {
+     attach: function (context) {
+       let className = document.body.className;
+       alert(className);
+     }
+   }
 
-})(jQuery, Drupal, drupalSettings);
+ })(jQuery, Drupal, drupalSettings);

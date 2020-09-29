@@ -7,20 +7,20 @@ use Drupal\Core\Controller\ControllerBase;
 /**
  * Class AttributeValueController.
  */
-class AttributeValueController extends ControllerBase {
 
+class AttributeValueController extends ControllerBase {
   /**
    * OutputValue.
    *
-   * @return string
+   * @return
    */
   public function outputValue() {
     return [
-       '#attached' => [
-         'library' => [
-           'ap_task94/my_library',
-         ],
-       ],
-     ];
+      '#attached' => [
+        'library' => [
+          'ap_task94/my_library',
+        ],
+      ],
+    ];
   }
 }

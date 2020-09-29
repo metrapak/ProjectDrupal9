@@ -4,3 +4,9 @@ my_library:
     js/script.js: {}
   dependencies:
     - core/jquery
+date_library:
+  version: 1.x
+  js:
+    js/currentDate.js: {}
+  dependencies:
+    - core/jquery
