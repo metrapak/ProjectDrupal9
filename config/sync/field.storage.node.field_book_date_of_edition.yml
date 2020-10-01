@@ -1,0 +1,20 @@
+uuid: dedb0b56-51ef-4995-a739-b56683c81a3b
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_book_date_of_edition
+field_name: field_book_date_of_edition
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

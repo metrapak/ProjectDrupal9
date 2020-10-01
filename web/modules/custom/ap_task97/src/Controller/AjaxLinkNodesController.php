@@ -19,8 +19,10 @@ class AjaxLinkNodesController extends ControllerBase  {
 
     $query = \Drupal::entityQuery('node')->count();
     $count = $query->execute();
-    $content['#markup'] = $count;
+
     $content['#attached']['library'][] = 'core/drupal.dialog.ajax';
+    $content['#markup'] = $count;
+
     $title = 'amount of nodes';
     $response = new AjaxResponse();
     $response->addCommand(new OpenModalDialogCommand($title, $content,
