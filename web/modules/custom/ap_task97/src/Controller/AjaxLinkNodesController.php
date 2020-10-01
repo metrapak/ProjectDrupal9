@@ -2,53 +2,31 @@
 
 namespace Drupal\ap_task97\Controller;
 
-
-use Drupal;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\node\Entity\Node;
 use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\OpenDialogCommand;
-use Drupal\Core\Ajax\addContent;
-use Drupal\Core\Ajax\addCommand;
-
+use Drupal\Core\Ajax\OpenModalDialogCommand;
 /**
  * Class AjaxLinkNodesController.
  */
 class AjaxLinkNodesController extends ControllerBase  {
-
   /**
-   * Ajaxlink.
+   * AjaxlinkAction.
    *
    * @return string
    *   Return Hello string.
    */
-  public function ajaxLink() {
+  public function ajaxLinkAction() {
 
-    $header = ['id', 'title', 'created'];
-    $nids = Drupal::entityQuery('node')->execute();
-    $nodes = Node::loadMultiple($nids);
-    $rows = [];
+    $query = \Drupal::entityQuery('node')->count();
+    $count = $query->execute();
+    $content['#markup'] = $count;
+    $content['#attached']['library'][] = 'core/drupal.dialog.ajax';
+    $title = 'amount of nodes';
+    $response = new AjaxResponse();
+    $response->addCommand(new OpenModalDialogCommand($title, $content,
+      ['width' => '400', 'height' => '400']));
 
-    foreach ($nodes as $node) {
-      $rows[] = [$node->nid->value, $node->title->value, $node->created->value];
-    }
-
-    $content = [
-      '#theme' => 'table',
-      '#header' => $header,
-      '#rows' => $rows,
-    ];
-
-    $selector = '#myID';
-    $title = 'Dialog Title';
-    $dialog_options = ['minHeight' => 200, 'resizable' => TRUE];
-    $settings = [];
-
-    $responce = new AjaxResponse();
-    $responce -> addCommand(new
-    OpenDialogCommand($selector, $title, $content, $dialog_options, $settings));
-
-    return $responce;
+    return $response;
   }
 
 }

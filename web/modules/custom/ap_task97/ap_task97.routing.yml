@@ -1,8 +1,8 @@
 
-ap_task97.ajax_link_nodes_controller_ajaxLink:
+ap_task97.ajax_link_nodes_controller_ajaxLinkAction:
   path: '/ap_task97'
   defaults:
-    _controller: '\Drupal\ap_task97\Controller\AjaxLinkNodesController::ajaxLink'
+    _controller: '\Drupal\ap_task97\Controller\AjaxLinkNodesController::ajaxLinkAction'
     _title: 'AjaxLink'
   requirements:
     _permission: 'access content'
