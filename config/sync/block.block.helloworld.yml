@@ -1,0 +1,20 @@
+uuid: c427d21a-4fcd-4f0d-9199-1c5d718acde7
+langcode: en
+status: true
+dependencies:
+  module:
+    - ap_task92
+  theme:
+    - bartik
+id: helloworld
+theme: bartik
+region: content
+weight: 0
+provider: null
+plugin: hello_world
+settings:
+  id: hello_world
+  label: 'Hello world'
+  provider: ap_task92
+  label_display: visible
+visibility: {  }
