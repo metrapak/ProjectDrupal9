@@ -1,0 +1,6 @@
+name: 'ap_task100'
+type: module
+description: 'Module to change status node''s publication'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Custom'
