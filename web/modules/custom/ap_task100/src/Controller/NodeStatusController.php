@@ -19,20 +19,23 @@ class NodeStatusController extends ControllerBase {
    *   Return Hello string.
    */
   public function changeStatusAction($nid) {
+    $node = Node::load($nid);
+    $status = $node->get('status');
+   if ($status === '0'){
 
-    $query = \Drupal::entityQuery('node');
-    $query->condition('nid',$nid);
-    $id = $query->execute();
+     $response = new AjaxResponse();
+     $response->addCommand(new
+      alertCommand('status of node is 0 already'));
+   }
+   else {
+     $node = Node::load($nid);
+     $node -> set('status', 0);
+     $node -> save();
+     $response = new AjaxResponse();
+     $response->addCommand(new
+      alertCommand('status of node was changed on 0'));
 
-    $node = Node::load(current($id));
-    $node->set('status', 0);
-    $node->save();
-
-    $response = new AjaxResponse();
-    $response->addCommand(new
-     alertCommand('status of node was changed on unpublished'));
-
+   }
     return $response;
   }
-
 }
