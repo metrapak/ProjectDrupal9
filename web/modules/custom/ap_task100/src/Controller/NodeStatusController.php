@@ -5,6 +5,7 @@ namespace Drupal\ap_task100\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\AlertCommand;
+use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\node\Entity\Node;
 
 /**
@@ -20,22 +21,24 @@ class NodeStatusController extends ControllerBase {
    */
   public function changeStatusAction($nid) {
     $node = Node::load($nid);
-    $status = $node->get('status');
-   if ($status === '0'){
+    $status = $node->get('status')->value;
 
-     $response = new AjaxResponse();
-     $response->addCommand(new
+    if (!$status) {
+      $response = new AjaxResponse();
+      $response->addCommand(new
       alertCommand('status of node is 0 already'));
-   }
-   else {
-     $node = Node::load($nid);
-     $node -> set('status', 0);
-     $node -> save();
-     $response = new AjaxResponse();
-     $response->addCommand(new
-      alertCommand('status of node was changed on 0'));
+    }
+    else {
+      $node->set('status', 0);
+      $node->save();
 
-   }
+      $response = new AjaxResponse();
+      $selector = '#' . $nid;
+      $content = '<p>status became 0 </p>';
+      $settings = ['my-setting' => 'setting',];
+      $response->addCommand(new ReplaceCommand($selector, $content, $settings));
+    }
     return $response;
   }
+
 }
