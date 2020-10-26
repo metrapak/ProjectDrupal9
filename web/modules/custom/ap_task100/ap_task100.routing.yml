@@ -1,6 +1,6 @@
 
 ap_task100.node_status_controller_changeStatusAction:
-  path: '/ap_task100/changeStatus/{nid}'
+  path: '/ap_task100/change_status/{nid}'
   defaults:
     _controller: '\Drupal\ap_task100\Controller\NodeStatusController::changeStatusAction'
     _title: 'changeStatusAction'

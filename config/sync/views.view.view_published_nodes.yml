@@ -133,8 +133,8 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<a class="use-ajax" href="/ap_task100/changeStatus/{{nid}}"  '' > change status to unpublished</a>'
-            make_link: false
+            text: '<a class="use-ajax" id ="nodes" data-id ="{{nid}}" href="/ap_task100/change_status/{{nid}}"   > change status to unpublished</a>'
+            make_link: true
             path: ''
             absolute: false
             external: false
@@ -282,6 +282,7 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:

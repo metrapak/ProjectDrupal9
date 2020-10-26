@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Contains ap_task100.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_theme().
+ */
+
+function ap_task100_theme($existing, $type, $theme, $path )
+{
+  return [
+    'link_text' => [
+      'variables' => ['linkText' => NULL],
+      'path' => drupal_get_path('module', 'ap_task100') . '/templates',
+    ],
+  ];
+
+}

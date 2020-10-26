@@ -22,23 +22,27 @@ class NodeStatusController extends ControllerBase {
   public function changeStatusAction($nid) {
     $node = Node::load($nid);
     $status = $node->get('status')->value;
+    $response = new AjaxResponse();
 
     if (!$status) {
-      $response = new AjaxResponse();
       $response->addCommand(new
       alertCommand('status of node is 0 already'));
     }
     else {
       $node->set('status', 0);
       $node->save();
+      $selector = 'a[data-id ="' . $nid . '"]';
 
-      $response = new AjaxResponse();
-      $selector = '#' . $nid;
-      $content = '<p>status became 0 </p>';
-      $settings = ['my-setting' => 'setting',];
-      $response->addCommand(new ReplaceCommand($selector, $content, $settings));
+      $renderable = [
+        '#theme' => 'link_text',
+        '#linkText' => 'status became 0',
+      ];
+
+      $response->addCommand(new ReplaceCommand($selector, $renderable));
+
     }
     return $response;
   }
+
 
 }
