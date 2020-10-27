@@ -2,15 +2,13 @@
 
 namespace Drupal\ap_task100\Controller;
 
-
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\AlertCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
-use Drupal\Core\Ajax\RedirectCommand;
+use Laminas\Diactoros\Response\RedirectResponse;
 use Drupal\node\Entity\Node;
-use Drupal\Core\Url;
-use Drupal\Core\Link;
+
 
 /**
  * Class NodeStatusController.
@@ -55,10 +53,7 @@ class NodeStatusController extends ControllerBase {
     else{
       $node->set('status', 0);
       $node->save();
-//          $url = '/published-nodes';
-//          $response->addCommand(new RedirectCommand($url));
-//          $current_uri = \Drupal::request()->getUri();
-//          return $this->redirect($current_uri);
+      return new RedirectResponse('/published-nodes');
     }
 
   }
