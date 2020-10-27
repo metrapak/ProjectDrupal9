@@ -31,30 +31,38 @@ class NodeStatusController extends ControllerBase {
     $is_ajax = \Drupal::request()->isXmlHttpRequest($response);
 
     if ($is_ajax) {
-      if (!$status) {
-        $response->addCommand(new
-        alertCommand('status of node is 0 already'));
-      }
-      else {
-        $node->set('status', 0);
-        $node->save();
-        $selector = 'a[data-id ="' . $nid . '"]';
-
-        $renderable = [
-          '#theme' => 'link_text',
-          '#linkText' => 'status became 0',
-        ];
-
-        $response->addCommand(new ReplaceCommand($selector, $renderable));
-
-      }
-      return $response;
+      return $this->checkStatus($response,$status,$node,$nid);
     }
     else{
-      $node->set('status', 0);
-      $node->save();
+      $this->setStatus($node);
       return new RedirectResponse('/published-nodes');
     }
+
+  }
+
+  public function checkStatus($response,$status,$node,$nid){
+
+    if (!$status) {
+      $this->setStatus($node);
+      $response->addCommand(new
+      alertCommand('status of node is 0 already'));
+    }
+    else {
+      $selector = 'a[data-id ="' . $nid . '"]';
+      $renderable = [
+        '#theme' => 'link_text',
+        '#linkText' => 'status became 0',
+      ];
+      $response->addCommand(new ReplaceCommand($selector, $renderable));
+    }
+    return $response;
+
+  }
+
+  public function setStatus($node) {
+
+    $node->set('status', 0);
+    $node->save();
 
   }
 
