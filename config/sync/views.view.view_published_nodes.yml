@@ -133,10 +133,10 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<a class="use-ajax link-text"  data-id ="{{nid}}" href="/ap_task100/change_status/{{nid}}" > change status to unpublished</a>'
+            text: '<a class="use-ajax link-text" data-id="{{nid}}" href="/ap_task100/change_status/{{nid}}">change status to unpublished</a>'
             make_link: true
-            path: ''
-            absolute: false
+            path: /published-nodes
+            absolute: true
             external: false
             replace_spaces: false
             path_case: none
@@ -165,7 +165,7 @@ display:
           element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: false
           empty: ''
           hide_empty: false
           empty_zero: false

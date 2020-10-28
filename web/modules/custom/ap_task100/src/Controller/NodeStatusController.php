@@ -12,15 +12,15 @@ use Drupal\node\Entity\Node;
 /**
  * Class NodeStatusController.
  */
-class NodeStatusController extends ControllerBase {
-
+class NewController extends ControllerBase {
   /**
+   *
    * @param $nid
    *
-   * @return \Laminas\Diactoros\Response\RedirectResponse|mixed
+   * @return \Drupal\Core\Ajax\AjaxResponse|\Laminas\Diactoros\Response\RedirectResponse
+   * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function changeStatusAction($nid) {
-
     $node = Node::load($nid);
     $status = $node->get('status')->value;
 
@@ -28,54 +28,30 @@ class NodeStatusController extends ControllerBase {
     $is_ajax = \Drupal::request()->isXmlHttpRequest($response);
 
     if ($is_ajax) {
-      return $this->checkStatus($response, $status, $node, $nid);
-    }
+      if (!$status) {
+        $response->addCommand(new alertCommand('status of node is 0 already'));
+      }
+      else {
+        $node->set('status', 0);
+        $node->save();
 
-    else{
-      $this->setStatus($node);
+        $selector = 'a[data-id ="' . $nid . '"]';
+
+        $renderable = [
+          '#theme' => 'link_text',
+          '#linkText' => 'status became 0',
+        ];
+        $response->addCommand(new ReplaceCommand($selector, $renderable));
+      }
+      return $response;
+    }
+    else {
+      $node->set('status', 0);
+      $node->save();
+
       return new RedirectResponse('/published-nodes');
     }
 
   }
-
-
-  /**
-   * @param $response
-   * @param $status
-   * @param $node
-   * @param $nid
-   *
-   * @return mixed
-   */
-  public function checkStatus($response, $status, $node, $nid){
-
-    if (!$status) {
-      $this->setStatus($node);
-      $response->addCommand(new
-      alertCommand('status of node is 0 already'));
-    }
-    else {
-      $selector = 'a[data-id ="' . $nid . '"]';
-      $renderable = [
-        '#theme' => 'link_text',
-        '#linkText' => 'status became 0',
-      ];
-      $response->addCommand(new ReplaceCommand($selector, $renderable));
-    }
-    return $response;
-
-  }
-
-
-  /**
-   * @param $node
-   */
-  public function setStatus($node) {
-
-    $node->set('status', 0);
-    $node->save();
-
-  }
-
 
 }
