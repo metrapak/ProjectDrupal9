@@ -9,19 +9,16 @@ use Drupal\Core\Ajax\ReplaceCommand;
 use Laminas\Diactoros\Response\RedirectResponse;
 use Drupal\node\Entity\Node;
 
-
 /**
  * Class NodeStatusController.
  */
 class NodeStatusController extends ControllerBase {
 
   /**
-   * ChangeStatusAction.
+   * @param $nid
    *
-   * @return string
-   *   Return Hello string.
+   * @return \Laminas\Diactoros\Response\RedirectResponse|mixed
    */
-
   public function changeStatusAction($nid) {
 
     $node = Node::load($nid);
@@ -31,8 +28,9 @@ class NodeStatusController extends ControllerBase {
     $is_ajax = \Drupal::request()->isXmlHttpRequest($response);
 
     if ($is_ajax) {
-      return $this->checkStatus($response,$status,$node,$nid);
+      return $this->checkStatus($response, $status, $node, $nid);
     }
+
     else{
       $this->setStatus($node);
       return new RedirectResponse('/published-nodes');
@@ -40,7 +38,16 @@ class NodeStatusController extends ControllerBase {
 
   }
 
-  public function checkStatus($response,$status,$node,$nid){
+
+  /**
+   * @param $response
+   * @param $status
+   * @param $node
+   * @param $nid
+   *
+   * @return mixed
+   */
+  public function checkStatus($response, $status, $node, $nid){
 
     if (!$status) {
       $this->setStatus($node);
@@ -59,6 +66,10 @@ class NodeStatusController extends ControllerBase {
 
   }
 
+
+  /**
+   * @param $node
+   */
   public function setStatus($node) {
 
     $node->set('status', 0);
