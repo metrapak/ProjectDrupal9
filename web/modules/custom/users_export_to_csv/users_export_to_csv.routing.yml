@@ -1,0 +1,7 @@
+users_export_to_csv.import users:
+  path: '/export-users'
+  defaults:
+    _form: '\Drupal\users_export_to_csv\Form\UsersExportForm'
+    _title: 'Users export'
+  requirements:
+    _permission: 'access content'

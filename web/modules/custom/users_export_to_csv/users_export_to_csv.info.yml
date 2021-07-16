@@ -1,0 +1,6 @@
+name: Users export to csv
+description: Provides user export through the batch to csv
+type: module
+version: 1.0
+core: 8.x
+core_version_requirement: ^8 || ^9
