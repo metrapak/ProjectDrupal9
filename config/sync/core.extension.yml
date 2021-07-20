@@ -1,4 +1,7 @@
 module:
+  ap_task92: 0
+  ap_task94: 0
+  ap_task97: 0
   automated_cron: 0
   big_pipe: 0
   block: 0
@@ -39,6 +42,7 @@ module:
   toolbar: 0
   tour: 0
   user: 0
+  users_data_import_from_csv: 0
   users_export_to_csv: 0
   views_ui: 0
   views: 10
