@@ -29,4 +29,3 @@ destination:
 migration_dependencies:
   required:
     - countries_data_csv_import
-
