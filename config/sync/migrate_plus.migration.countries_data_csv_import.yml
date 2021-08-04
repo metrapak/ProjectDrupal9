@@ -14,12 +14,8 @@ source:
   path: countries_data.csv
   delimiter: ' '
   ids:
-    - id
+    - needed_id
   header_row_count: 1
-  keys:
-    - id
-  constants:
-    status: 1
 process:
   name: country
   id: id

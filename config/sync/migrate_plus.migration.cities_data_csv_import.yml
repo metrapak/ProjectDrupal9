@@ -16,15 +16,17 @@ source:
   ids:
     - id
   header_row_count: 1
-  keys:
-    - id
-  constants:
-    status: 1
 process:
   name: city
   id: id
-  field_country_id: country_id
+  field_country_id:
+    plugin: migration_lookup
+    migration: countries_data_csv_import
+    source: country_id
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: city
-migration_dependencies: null
+migration_dependencies:
+  required:
+    - countries_data_csv_import
+
