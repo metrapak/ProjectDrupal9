@@ -18,8 +18,6 @@ source:
   header_row_count: 1
 process:
   name: country
-  id: id
-  field_old_id: id
 destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: country
