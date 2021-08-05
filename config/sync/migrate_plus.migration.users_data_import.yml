@@ -1,0 +1,38 @@
+uuid: ae74917e-191d-483e-8251-6e3fd2017b42
+langcode: en
+status: true
+dependencies: {  }
+id: users_data_import
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: default
+label: 'Custom term migration users'
+source:
+  plugin: csv
+  path: users_data.csv
+  delimiter: ' '
+  ids:
+    - id
+  header_row_count: 1
+  constants:
+    status: 1
+process:
+  name: username
+  mail: email
+  pass:
+    plugin: callback
+    callable: md5
+    source: password
+  field_u_full_name:
+    plugin: concat
+    source:
+      - first_name
+      - last_name
+    delimiter: ' '
+  status: constants/status
+destination:
+  plugin: 'entity:user'
+  md5_passwords: true
+migration_dependencies: null
