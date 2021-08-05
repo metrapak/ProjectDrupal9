@@ -17,7 +17,12 @@ source:
     - id
   header_row_count: 1
 process:
-  name: city
+  name:
+    plugin: concat
+    source:
+      - city
+      - id
+    delimiter: ' - '
   field_country_id:
     plugin: migration_lookup
     migration: countries_data_csv_import
