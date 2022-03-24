@@ -1,0 +1,8 @@
+name: 'commerce_orders'
+type: module
+description: 'Module for commerce_orders'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Custom'
+regions:
+  content: 'Content'

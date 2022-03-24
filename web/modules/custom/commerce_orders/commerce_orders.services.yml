@@ -1,0 +1,10 @@
+services:
+  commerce_orders.event_subscriber:
+    class: Drupal\commerce_orders\EventSubscriber\CommerceOrdersSubscriber
+    arguments: ['@module_handler']
+    tags:
+      - { name: event_subscriber }
+
+  commerce_orders.commers_order_service:
+    class: Drupal\commerce_orders\CommerceOrdersService
+    arguments: ['@entity_type.manager', '@database']
