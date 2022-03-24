@@ -1,4 +1,5 @@
 module:
+  address: 0
   automated_cron: 0
   big_pipe: 0
   block: 0
@@ -6,21 +7,43 @@ module:
   breakpoint: 0
   ckeditor: 0
   color: 0
+  color_field: 0
   comment: 0
+  commerce: 0
+  commerce_cart: 0
+  commerce_checkout: 0
+  commerce_demo: 0
+  commerce_number_pattern: 0
+  commerce_order: 0
+  commerce_orders: 0
+  commerce_payment: 0
+  commerce_payment_example: 0
+  commerce_price: 0
+  commerce_pricelist: 0
+  commerce_product: 0
+  commerce_promotion: 0
+  commerce_shipping: 0
+  commerce_store: 0
+  commerce_tax: 0
   config: 0
   contact: 0
   contextual: 0
+  core_event_dispatcher: 0
   datetime: 0
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
+  entity: 0
+  entity_reference_revisions: 0
   field: 0
   field_ui: 0
   file: 0
   filter: 0
   help: 0
   history: 0
+  hook_event_dispatcher: 0
   image: 0
+  inline_entity_form: 0
   link: 0
   menu_link_content: 0
   menu_ui: 0
@@ -33,13 +56,20 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  physical: 0
+  preprocess_event_dispatcher: 0
+  profile: 0
   quickedit: 0
   rdf: 0
   search: 0
+  search_api: 0
+  search_api_db: 0
   shortcut: 0
+  state_machine: 0
   system: 0
   taxonomy: 0
   text: 0
+  token: 0
   toolbar: 0
   tour: 0
   user: 0

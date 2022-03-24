@@ -1,0 +1,7 @@
+commerce_orders.orders:
+  path: '/list-of-products'
+  defaults:
+    _controller: '\Drupal\commerce_orders\Controller\CommerceOrdersController::getOrdersStatistics'
+    _title: 'List of products'
+  requirements:
+    _permission: 'access content'
